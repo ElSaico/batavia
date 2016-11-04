@@ -11,13 +11,13 @@ batavia.modules.RegExp = {
             throw new batavia.builtins.TypeError('flags must be a string, when given');
         }
         var obj = RegExp(pattern, flags);
-        this.flags = flags;
-        this.source = pattern;
-        this.global = obj.global;
-        this.ignoreCase = obj.ignoreCase;
-        this.multiline = obj.multiline;
-        this.sticky = obj.sticky;
-        this.unicode = obj.unicode;
+        this.flags = new batavia.types.Str(flags);
+        this.source = new batavia.types.Str(pattern);
+        this.global = new batavia.types.Bool(obj.global);
+        this.ignoreCase = new batavia.types.Bool(obj.ignoreCase);
+        this.multiline = new batavia.types.Bool(obj.multiline);
+        this.sticky = new batavia.types.Bool(obj.sticky);
+        this.unicode = new batavia.types.Bool(obj.unicode);
 
         this.exec = function (str) {
             if (!batavia.isinstance(str, batavia.types.Str)) {
