@@ -55,7 +55,9 @@ batavia.modules.RegExp = {
             } else if (!batavia.isinstance(limit, batavia.types.Int) && limit !== undefined) {
                 throw new batavia.builtins.TypeError('limit must be an integer, when given');
             }
-            return new batavia.types.Int(str.split(obj, limit));
+            return new batavia.types.List(str.split(obj, limit).map(function(value) {
+                return new batavia.types.Str(value);
+            }));
         };
 
         return this;
